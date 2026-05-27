@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Manga Previewer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="is-library">
+    <main class="app-shell">
+      <section class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="brand-row">
+          <div>
+            <p class="eyebrow">JPEG manuscript checker</p>
+            <h1 id="upload-title">Manga Previewer</h1>
+          </div>
+          <button class="icon-button" id="refreshButton" type="button" title="更新" aria-label="更新">
+            <span aria-hidden="true">↻</span>
+          </button>
+        </div>
+
+        <form id="uploadForm" class="upload-form">
+          <label class="field-label" for="titleInput">タイトル</label>
+          <input id="titleInput" name="title" autocomplete="off" placeholder="例: 第3話 ネーム確認" />
+
+          <label class="drop-zone" id="dropZone" for="fileInput">
+            <input id="fileInput" name="pages" type="file" accept="image/jpeg,.jpg,.jpeg" multiple />
+            <span class="drop-title">JPEGをまとめて選択</span>
+            <span class="drop-sub">ファイル名順に並べて保存します</span>
+          </label>
+
+          <div class="selected-files" id="selectedFiles">未選択</div>
+
+          <button class="primary-button" type="submit">
+            <span>アップロードして読む</span>
+          </button>
+        </form>
+
+        <div class="network-box">
+          <p>スマホは同じWi-Fiで下のURLを開いてください。</p>
+          <div id="networkUrls" class="url-list"></div>
+        </div>
+
+        <div class="library">
+          <div class="section-title">
+            <h2>保存済み</h2>
+            <span id="projectCount">0件</span>
+          </div>
+          <div id="projectList" class="project-list"></div>
+        </div>
+      </section>
+
+      <section class="reader" aria-label="漫画プレビュー">
+        <header class="reader-bar">
+          <button class="ghost-button" id="backButton" type="button">一覧</button>
+          <div>
+            <p id="readerMeta">原稿を選択</p>
+            <h2 id="readerTitle">プレビュー</h2>
+          </div>
+          <button class="ghost-button" id="fitButton" type="button">幅</button>
+        </header>
+        <button class="reader-exit" id="readerExitButton" type="button">管理へ戻る</button>
+        <div class="reader-pages" id="readerPages">
+          <div class="empty-state">JPEG原稿をアップロードすると、ここに漫画アプリ風の縦スクロールで表示されます。</div>
+        </div>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

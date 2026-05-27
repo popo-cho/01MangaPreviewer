@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: manga-previewer
+    runtime: node
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: manga-previewer-data
+      mountPath: /var/data
+      sizeGB: 10
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+      - key: ACCESS_PASSWORD
+        sync: false
+      - key: ACCESS_SECRET
+        generateValue: true
